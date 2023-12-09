@@ -1,40 +1,48 @@
 package ru.netology;
 
 public class Radio {
-    private int currentNumber;
+    private int currentStation;
     private int currentVolume;
-    private int minNumber = 0;
-    private int maxNumber = 9;
-    private int minVolume = 0;
-    private int maxVolume = 10;
+    private final int numberStation = 10;
+    private final int minStation = 0;
+    private int maxStation = numberStation - 1;
+    private final int minVolume = 0;
+    private final int maxVolume = 100;
 
-    public int getCurrentNumber() {
-        return currentNumber;
+    public Radio(int numberStation) { // конструктор для задания числа радиостанций
+        maxStation = numberStation - 1;
     }
 
-    public void setCurrentNumber(int newCurrentNumber) {
-        if (newCurrentNumber < minNumber) {
+    public Radio() { // конструктор для задания числа радиостанций по умолчанию
+    }
+
+    public int getCurrentStation() {
+        return currentStation;
+    }
+
+    public void setCurrentStation(int newCurrentStation) { // указываем границы диапазона
+        if (newCurrentStation < minStation) {
             return;
         }
-        if (newCurrentNumber > maxNumber) {
+        if (newCurrentStation > maxStation) {
             return;
         }
-        currentNumber = newCurrentNumber;
+        currentStation = newCurrentStation;
     }
 
-    public void nextNumber() {
-        if (currentNumber < maxNumber) {
-            currentNumber = currentNumber + 1;
+    public void nextStation() {
+        if (currentStation < maxStation) {
+            currentStation = currentStation + 1;
         } else {
-            currentNumber = minNumber;
+            currentStation = minStation; // переход счетчика после 9 на 0
         }
     }
 
-    public void prevNumber() {
-        if (currentNumber > minNumber) {
-            currentNumber = currentNumber - 1;
+    public void prevStation() {
+        if (currentStation > minStation) {
+            currentStation = currentStation - 1;
         } else {
-            currentNumber = maxNumber;
+            currentStation = maxStation; // переход счетчика после 0 на 9
         }
     }
 
@@ -42,12 +50,12 @@ public class Radio {
         return currentVolume;
     }
 
-    public void setCurrentVolume(int newCurrentVolume) {
+    public void setCurrentVolume(int newCurrentVolume) { // указываем границы диапазона
         if (newCurrentVolume < minVolume) {
-            newCurrentVolume = minVolume;
+            return;
         }
         if (newCurrentVolume > maxVolume) {
-            newCurrentVolume = maxVolume;
+            return;
         }
         currentVolume = newCurrentVolume;
     }
@@ -56,11 +64,17 @@ public class Radio {
         if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
         }
+        else {
+            currentVolume = maxVolume;
+        }
     }
 
     public void decreaseVolume() {
         if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
+        }
+        else {
+            currentVolume = minVolume;
         }
     }
 }
