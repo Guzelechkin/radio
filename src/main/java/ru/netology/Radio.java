@@ -9,18 +9,18 @@ public class Radio {
     private final int minVolume = 0;
     private final int maxVolume = 100;
 
-    public Radio(int numberStation) { // конструктор для задания числа радиостанций
+    public Radio(int numberStation) {
         maxStation = numberStation - 1;
     }
 
-    public Radio() { // конструктор для задания числа радиостанций по умолчанию
+    public Radio() {
     }
 
     public int getCurrentStation() {
         return currentStation;
     }
 
-    public void setCurrentStation(int newCurrentStation) { // указываем границы диапазона
+    public void setCurrentStation(int newCurrentStation) {
         if (newCurrentStation < minStation) {
             return;
         }
@@ -34,7 +34,7 @@ public class Radio {
         if (currentStation < maxStation) {
             currentStation = currentStation + 1;
         } else {
-            currentStation = minStation; // переход счетчика после 9 на 0
+            currentStation = minStation; //
         }
     }
 
@@ -42,7 +42,7 @@ public class Radio {
         if (currentStation > minStation) {
             currentStation = currentStation - 1;
         } else {
-            currentStation = maxStation; // переход счетчика после 0 на 9
+            currentStation = maxStation; /
         }
     }
 
@@ -50,7 +50,7 @@ public class Radio {
         return currentVolume;
     }
 
-    public void setCurrentVolume(int newCurrentVolume) { // указываем границы диапазона
+    public void setCurrentVolume(int newCurrentVolume) {
         if (newCurrentVolume < minVolume) {
             return;
         }
@@ -63,8 +63,7 @@ public class Radio {
     public void increaseVolume() {
         if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
-        }
-        else {
+        } else {
             currentVolume = maxVolume;
         }
     }
@@ -72,8 +71,7 @@ public class Radio {
     public void decreaseVolume() {
         if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
-        }
-        else {
+        } else {
             currentVolume = minVolume;
         }
     }
